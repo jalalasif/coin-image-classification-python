@@ -12,8 +12,8 @@ img = cv2.GaussianBlur(img, (5, 5), 0)
 
 
 
-circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,480,
-                            param1=50,param2=27,minRadius=60,maxRadius=120)
+circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,450,
+                            param1=60,param2=35,minRadius=70,maxRadius=130)
 
 # Rounds up the coordinates
 circles = np.uint16(np.around(circles))
