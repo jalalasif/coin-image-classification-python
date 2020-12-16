@@ -10,21 +10,19 @@ original_img = cv2.imread('coins.jpeg', 1)
 # adds some blur to reduce clarity; else it detects circles everywhere
 img = cv2.GaussianBlur(img, (5, 5), 0)
 
-
-
-circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,450,
-                            param1=60,param2=35,minRadius=70,maxRadius=130)
+circles = cv2.HoughCircles(img, cv2.HOUGH_GRADIENT, 1, 460,
+                           param1=47, param2=49, minRadius=80, maxRadius= 120)
 
 # Rounds up the coordinates
 circles = np.uint16(np.around(circles))
 count = 0
-for i in circles[0,:]:
+for i in circles[0, :]:
     # draw the outer circle
-    cv2.circle(original_img,(i[0],i[1]),i[2],(0,255,0),2)
+    cv2.circle(original_img, (i[0], i[1]), i[2], (0, 255, 0), 2)
     # draw the center of the circle
-    cv2.circle(original_img,(i[0],i[1]),2,(0,0,255),3)
-    cv2.putText(original_img, str(count), (i[0],i[1]), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 2, (0,0,0), 2)
-    count+=1
+    cv2.circle(original_img, (i[0], i[1]), 2, (0, 0, 255), 3)
+    cv2.putText(original_img, str(count) , (i[0], i[1]), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 2, (0, 0, 0), 2)
+    count += 1
 
 print(circles)
 
