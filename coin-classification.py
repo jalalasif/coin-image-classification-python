@@ -12,8 +12,8 @@ img = cv2.GaussianBlur(img, (5, 5), 0)
 
 
 
-circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,20,
-                            param1=20,param2=15,minRadius=30,maxRadius=60)
+circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,480,
+                            param1=50,param2=27,minRadius=60,maxRadius=120)
 
 # Rounds up the coordinates
 circles = np.uint16(np.around(circles))
@@ -23,11 +23,12 @@ for i in circles[0,:]:
     cv2.circle(original_img,(i[0],i[1]),i[2],(0,255,0),2)
     # draw the center of the circle
     cv2.circle(original_img,(i[0],i[1]),2,(0,0,255),3)
-    #cv2.putText(original_img, str(count), (i[0],i[1]), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 2, (0,0,0), 2)
+    cv2.putText(original_img, str(count), (i[0],i[1]), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 2, (0,0,0), 2)
+    count+=1
 
 print(circles)
 
 # Commented out; these three lines of code are simply there to generate the window to show the code works
 cv2.imshow("Img", original_img)
-cv2.waitKey(1)
+cv2.waitKey(0)
 cv2.destroyAllWindows()
