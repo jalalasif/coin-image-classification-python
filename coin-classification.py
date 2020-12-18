@@ -4,8 +4,8 @@ import cv2
 
 def compute_radii (coins):
      radii = []
-     for rounded_thingy in circles[0:]: # Coudn't think of another name. No, really.
-         radii.append(circles[2])
+     for rounded_thingy in circles[0,:]: # Coudn't think of another name. No, really.
+         radii.append(rounded_thingy[2])
      return radii
 
 # read the image and render it black and white (reducing colours makes the application easier); also, it starts to detec
